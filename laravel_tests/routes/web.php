@@ -15,8 +15,8 @@ use App\Http\Controllers\ProjectController;
 
 Route::get('/',[ProjectController::class, 'getAllDepartments']);
 Route::post('/showAppointments',[ProjectController::class,'showAppointments'])->name('showAppointments');
-
-
+Route::post('/bookAppointment',[ProjectController::class, 'bookAppointment'])->name('bookAppointment')->middleware('auth');
+Route::get('/mybookings', [ProjectController::class,'myBookings'])->name('myBookings')->middleware('auth');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
